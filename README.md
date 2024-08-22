@@ -1,4 +1,4 @@
-# coffee_ui
+# Koffi UI
 
 A new Flutter project.
 
