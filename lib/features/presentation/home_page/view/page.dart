@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:coffee_ui/core/constants/dummy%20datas/coffees.dart';
 import 'package:coffee_ui/core/constants/theme/palette.dart';

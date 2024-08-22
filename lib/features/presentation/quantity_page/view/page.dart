@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'dart:math' as math;
 
 import 'package:coffee_ui/core/constants/theme/palette.dart';
