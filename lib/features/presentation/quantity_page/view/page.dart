@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:math' as math;
 
 import 'package:coffee_ui/core/constants/theme/palette.dart';
@@ -10,7 +11,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
 class QuantityPage extends StatefulWidget {
-  const QuantityPage({super.key});
+  final String coffeeName;
+  const QuantityPage({super.key, required this.coffeeName});
 
   @override
   State<QuantityPage> createState() => _QuantityPageState();
@@ -32,8 +34,6 @@ class _QuantityPageState extends State<QuantityPage>
 
   @override
   void initState() {
-    
-
     _sizeAnimationController = AnimationController(
         vsync: this, duration: const Duration(milliseconds: 400));
     _sizeAnimation = Tween(begin: 0.6, end: 0.9).animate(CurvedAnimation(
@@ -130,7 +130,6 @@ class _QuantityPageState extends State<QuantityPage>
 
   @override
   void dispose() {
-    
     _exitAnimationController.dispose();
     _sizeAnimationController.dispose();
     _beansAnimationController.dispose();
@@ -207,7 +206,8 @@ class _QuantityPageState extends State<QuantityPage>
                                                   _exitAnimation[0].value *
                                                       -50.h),
                                               child: kText(
-                                                text: 'Machiatto',
+                                                // text: 'Machiatto',
+                                                text: widget.coffeeName,
                                                 fontSize: 26,
                                                 fontWeight: FontWeight.w600,
                                               ),

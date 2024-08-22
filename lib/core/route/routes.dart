@@ -22,9 +22,10 @@ class Routes {
         routes: [
           GoRoute(
             path: RouteName.quantityPage.replaceAll('/', ''),
-            builder: (context, state) => const QuantityPage(),
+            builder: (context, state) =>
+                QuantityPage(coffeeName: state.extra.toString()),
             pageBuilder: (context, state) => customTransition(
-                page: const QuantityPage(),
+                page: QuantityPage(coffeeName: state.extra.toString()),
                 duration: const Duration(milliseconds: 40)),
             name: RouteName.quantityPage,
             routes: [

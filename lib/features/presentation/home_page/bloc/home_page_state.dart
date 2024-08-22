@@ -10,3 +10,10 @@ final class HomePageStatePageOffset extends HomePageState {
 
   HomePageStatePageOffset(this.pageOffset);
 }
+
+
+final class HomePageStateCoffeeName extends HomePageState {
+  final String coffeeName;
+
+  HomePageStateCoffeeName(this.coffeeName);
+}

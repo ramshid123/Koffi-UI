@@ -8,3 +8,9 @@ final class HomePageEventSetPaegOffset extends HomePageEvent {
 
   HomePageEventSetPaegOffset(this.pageOffset);
 }
+
+final class HomePageEventSetCoffeeName extends HomePageEvent {
+  final String coffeeName;
+
+  HomePageEventSetCoffeeName(this.coffeeName);
+}

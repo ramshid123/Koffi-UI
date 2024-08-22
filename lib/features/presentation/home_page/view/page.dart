@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:coffee_ui/core/constants/dummy%20datas/coffees.dart';
 import 'package:coffee_ui/core/constants/theme/palette.dart';
 import 'package:coffee_ui/core/route/routes.dart';
 import 'package:coffee_ui/core/widgets/common.dart';
@@ -61,6 +64,9 @@ class _HomePageState extends State<HomePage>
   }
 
   void pageListener() {
+    context.read<HomePageBloc>().add(HomePageEventSetCoffeeName(
+        dummyCoffeeData[(pageController.page ?? 0.0).toInt()]['name'] ??
+            'Macchiato'));
     context
         .read<HomePageBloc>()
         .add(HomePageEventSetPaegOffset(pageController.page ?? 0.0));
@@ -181,9 +187,24 @@ class _HomePageState extends State<HomePage>
                     kHeight(70.h),
                     Transform.translate(
                       offset: Offset(0.0, _exitAnimation.value * 150.h),
-                      child: HomePageWidgets.continueButton(
-                          context: context,
-                          animController: _exitAnimationController),
+                      child: BlocBuilder<HomePageBloc, HomePageState>(
+                        buildWhen: (previous, current) {
+                          if (current is HomePageStateCoffeeName) {
+                            return true;
+                          }
+                          return false;
+                        },
+                        builder: (context, state) {
+                          String coffeeName = 'Macchiato';
+                          if (state is HomePageStateCoffeeName) {
+                            coffeeName = state.coffeeName;
+                          }
+                          return HomePageWidgets.continueButton(
+                              context: context,
+                              coffeeName: coffeeName,
+                              animController: _exitAnimationController);
+                        },
+                      ),
                     ),
                     kHeight(70.h),
                   ],

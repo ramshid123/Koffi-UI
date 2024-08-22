@@ -66,14 +66,14 @@ class HomePageWidgets {
 
   static Widget continueButton(
       {required BuildContext context,
-      required AnimationController animController}) {
+      required AnimationController animController, required String coffeeName}) {
     return Align(
       alignment: Alignment.center,
       child: GestureDetector(
         onTap: () async {
           await animController.forward();
           if (context.mounted) {
-            context.goNamed(RouteName.quantityPage);
+            context.goNamed(RouteName.quantityPage, extra: coffeeName);
           }
         },
         child: Container(
