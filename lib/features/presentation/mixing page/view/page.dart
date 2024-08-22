@@ -1,4 +1,3 @@
-
 import 'package:coffee_ui/core/constants/theme/palette.dart';
 import 'package:coffee_ui/core/route/route_names.dart';
 import 'package:coffee_ui/core/widgets/common.dart';
@@ -23,7 +22,6 @@ class _MixingPageState extends State<MixingPage> with TickerProviderStateMixin {
 
   @override
   void initState() {
-    
     _pourAnimationController =
         AnimationController(vsync: this, duration: const Duration(seconds: 10));
 
@@ -67,7 +65,6 @@ class _MixingPageState extends State<MixingPage> with TickerProviderStateMixin {
 
   @override
   void dispose() {
-    
     _pourAnimationController.dispose();
     _exitAnimationController.dispose();
     super.dispose();
@@ -145,10 +142,22 @@ class _MixingPageState extends State<MixingPage> with TickerProviderStateMixin {
                                       -300.h * (1 - _pourAnimation[2].value)),
                                   child: Column(
                                     children: [
-                                      CircleAvatar(
-                                        radius: 30.r,
-                                        backgroundColor:
-                                            ColorConstants.brownColor,
+                                      Container(
+                                        height: 60.r,
+                                        width:60.r,
+                                        decoration: BoxDecoration(
+                                          color: ColorConstants.brownColor,
+                                          shape: BoxShape.circle,
+                                          boxShadow: [
+                                            BoxShadow(
+                                              color: ColorConstants.brownColor
+                                                  .withOpacity(0.9),
+                                              offset: const Offset(0, 13),
+                                              blurRadius: 25,
+                                              spreadRadius: 4,
+                                            ),
+                                          ],
+                                        ),
                                         child: Icon(
                                           Icons.check,
                                           color: ColorConstants.backGroundColor,
